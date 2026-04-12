@@ -4,7 +4,7 @@ rules_rusak = {
     ("PSU Lemah", "Solusi: Coba bersihkan debu di kipas dan ventilasi PSU") : {"shutdown_random", "gagal_boot", "suara_aneh", "bau_terbakar"},
     ("Processor Overheat", "Solusi: Coba ganti thermal paste yang baru") : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "cpu_panas"},
     ("Harddisk Corrupt", "Solusi: Coba ganti kabel SATA atau kabel USB") : {"sering_freeze", "suara_aneh", "performa_turun", "file_menghilang"},
-    ("GPU Bermasalah", "Solusi: Coba ganti thermal paste yang baru atau coba bersihkan kipas pada GPU") : {"shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "driver_error"}
+    ("GPU Bermasalah", "Solusi: Coba coba bersihkan kipas pada GPU") : {"shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "driver_error"}
 }
 
 # array kosong menampung kendala
