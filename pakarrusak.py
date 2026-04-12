@@ -1,14 +1,16 @@
 # data rusak dan kendala nya -> "nama rusak" : {"kendala1", "kendala2", ...}
 rules_rusak = {
-    "RAM Rusak" : {"sering_freeze", "gagal_boot", "sering_crash"},
-    "PSU Lemah" : {"shutdown_random", "gagal_boot", "suara_aneh", "bau_terbakar"},
-    "Processor Overheat" : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch"},
-    "Harddisk Corrupt" : {"sering_freeze", "suara_aneh", "performa_turun", "file_menghilang"},
-    "GPU Bermasalah" : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "driver_error"}
+    ("RAM Rusak", "solusi ram") : {"sering_freeze", "gagal_boot", "sering_crash"},
+    ("PSU Lemah", "solusi psu") : {"shutdown_random", "gagal_boot", "suara_aneh", "bau_terbakar"},
+    ("Processor Overheat", "solusi cpu") : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch"},
+    ("Harddisk Corrupt", "solusi hdd") : {"sering_freeze", "suara_aneh", "performa_turun", "file_menghilang"},
+    ("GPU Bermasalah", "solusi gpu") : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "driver_error"}
 }
 
+# array kosong menampung kendala
 kendala = []
 
+# fungsi tanya pertanyaan dan kirim ke array kendala
 def tanya_kendala(kode_kendala, teks_pertanyaan):
     # menampilkan pertanyaan
     jawaban = input(f"{teks_pertanyaan} (y/t): ").lower()
@@ -17,6 +19,7 @@ def tanya_kendala(kode_kendala, teks_pertanyaan):
     if jawaban == 'y':
         kendala.append(kode_kendala)
 
+# fungsi mendiagnosis hasil berdasarkan array kendala
 def diagnosa_kendala(input_kendala):
     hasil_diagnosa = []
 
