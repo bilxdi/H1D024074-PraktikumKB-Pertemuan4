@@ -1,35 +1,44 @@
-# data rusak dan kendala nya -> "nama rusak" : "kendala1", "kendala2", ...
+# data rusak dan kendala nya -> "nama rusak" : {"kendala1", "kendala2", ...}
 rules_rusak = {
     "RAM Rusak" : {"sering_freeze", "gagal_boot", "sering_crash"},
     "PSU Lemah" : {"shutdown_random", "gagal_boot", "suara_aneh", "bau_terbakar"},
     "Processor Overheat" : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch"},
-    "Harddisk Corrupt" : {"sering_freeze", "suara_aneh", "performa_turun", "file_tidak_terbuka"},
-    "GPU Bermasalah" : {"sering_freeze", "shutdown_random", "demam", "mimisan", "mual"}
+    "Harddisk Corrupt" : {"sering_freeze", "suara_aneh", "performa_turun", "file_menghilang"},
+    "GPU Bermasalah" : {"sering_freeze", "shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "driver_error"}
 }
 
-semua_kendala = [
-    ("nyeri_otot", "Apakah Anda merasa nyeri otot?"),
-    ("muntah", "Apakah Anda muntah muntah?"),
-    ("kejang", "Apakah Anda mengalami kejang kejang?"),
-    ("menggigil", "Apakah Anda sering menggigil?"),
-    ("tidak_enak_badan", "Apakah Anda merasa tidak enak badan?"),
-    ("keringat_dingin", "Apakah Anda keluar keringat dingin?"),
-    ("sakit_kepala", "Apakah Anda merasa sakit kepala?"),
-    ("mimisan", "Apakah Anda mengalami mimisan?"),
-    ("mual", "Apakah Anda merasa mual?"),
-    ("demam", "Apakah Anda mengalami demam?")
-]
+kendala = []
 
-def diagnosa_malaria(gejala_input):
+def tanya_kendala(kode_kendala, teks_pertanyaan):
+    # menampilkan pertanyaan
+    jawaban = input(f"{teks_pertanyaan} (y/t): ").lower()
+
+    # Jika jawaban 'y', masukkan ke dalam list kendala
+    if jawaban == 'y':
+        kendala.append(kode_kendala)
+
+def diagnosa_kendala(input_kendala):
     hasil_diagnosa = []
 
-    for penyakit, gejala_syarat in rules_rusak.items():
+    for kendala, syarat_kendala in rules_rusak.items():
         # Cek apakah SEMUA gejala syarat terpenuhi oleh input user
-        if gejala_syarat.issubset(gejala_input):
-            hasil_diagnosa.append(penyakit)
+        if syarat_kendala.issubset(input_kendala):
+            hasil_diagnosa.append(kendala)
 
-    return hasil_diagnosa if hasil_diagnosa else ["Tidak terdeteksi penyakit"]
+    return hasil_diagnosa if hasil_diagnosa else ["Tidak terdeteksi rusak"]
 
-# Simulasi seperti perintah assertz di Prolog
-gejala_pasien = {"nyeri_otot", "menggigil", "tidak_enak_badan"}
-print(f"Hasil Diagnosa: {diagnosa_malaria(gejala_pasien)}")
+# tanya kendala
+tanya_kendala("sering_freeze", "Apakah layar sering freeze?")
+tanya_kendala("gagal_boot", "Apakah sering gagal boot?")
+tanya_kendala("sering_crash", "Apakah aplikasi sering crash saat dipakai?")
+tanya_kendala("shutdown_random", "Apakah sering tiba tiba shutdown?")
+tanya_kendala("suara_aneh", "Apakah ada suara aneh dari dalam komputer?")
+tanya_kendala("bau_terbakar", "Apakah ada bau terbakar dari dalam komputer?")
+tanya_kendala("fan_kencang", "Apakah fan berputar terlalu kencang?")
+tanya_kendala("performa_turun", "Apakah ada penurunan performa yang tidak normal?")
+tanya_kendala("layar_glitch", "Apakah ada glitch pada layar saat memakai komputer?")
+tanya_kendala("file_menghilang", "Apakah ada beberapa file yang menghilang?")
+tanya_kendala("driver_error", "Apakah muncul error driver gpu?")
+
+# print hasil diagnosa
+print(f"Hasil Diagnosa: {diagnosa_kendala(kendala)}")
