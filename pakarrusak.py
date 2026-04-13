@@ -1,4 +1,4 @@
-# data rusak dan kendala nya -> "nama rusak" : {"kendala1", "kendala2", ...}
+# data rusak dan kendala nya -> ("nama rusak", "solusi") : {"kendala1", "kendala2", ...}
 rules_rusak = {
     ("RAM Rusak", "Solusi: Coba bersihkan pin RAM dengan penghapus pensil") : {"sering_freeze", "gagal_boot", "sering_crash"},
     ("PSU Lemah", "Solusi: Coba bersihkan debu di kipas dan ventilasi PSU") : {"shutdown_random", "gagal_boot", "suara_aneh", "bau_terbakar"},
@@ -7,7 +7,7 @@ rules_rusak = {
     ("GPU Bermasalah", "Solusi: Coba bersihkan kipas pada GPU") : {"shutdown_random", "fan_kencang", "performa_turun", "layar_glitch", "driver_error"}
 }
 
-# array kosong menampung kendala
+# list kosong menampung kendala
 kendala = []
 
 # fungsi tanya pertanyaan dan kirim ke array kendala
@@ -35,6 +35,7 @@ def diagnosa_kendala(input_kendala):
 
     return hasil_diagnosa if hasil_diagnosa else ["Tidak terdeteksi rusak"]
 
+# judul awal
 print("=== SISTEM PAKAR DIAGNOSA KERUSAKAN KOMPUTER ===")
 print("Jawablah pertanyaan berikut dengan 'y' untuk Ya atau 't' untuk Tidak.\n")
 
