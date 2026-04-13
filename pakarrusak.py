@@ -1,4 +1,4 @@
-# data rusak dan kendala nya -> ("nama rusak", "solusi") : {"kendala1", "kendala2", ...}
+# data rusak, solusi, dan kendala nya -> ("nama rusak", "solusi") : {"kendala1", "kendala2", ...}
 rules_rusak = {
     ("RAM Rusak", "Solusi: Coba bersihkan pin RAM dengan penghapus pensil") : {"sering_freeze", "gagal_boot", "sering_crash"},
     ("PSU Lemah", "Solusi: Coba bersihkan debu di kipas dan ventilasi PSU") : {"shutdown_random", "gagal_boot", "suara_aneh", "bau_terbakar"},
